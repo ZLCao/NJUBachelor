@@ -1,0 +1,83 @@
+\documentclass{NJUbachelor}
+
+\sid{} %学号
+\grade{} %年级
+
+\cauthor{} %学生姓名
+\ctitle{标准模板} %题目
+\cdepartment{} %院系
+\cspecialization{} %专业
+\cmentor{}{} %指导老师 职称
+\ckeywords{} %关键词
+\cdate{} %提交日期
+
+\eauthor{} %UNDERGRADUATE
+\etitle{} %THESIS
+\edepartment{} %DEPARTMENT
+\especialization{} %SPECIALIZATION
+\ementor{}{} %MENTOR MENTORTITLE
+\ekeywords{} %KEY WORDS
+
+\begin{document}
+
+\makectitlepage
+
+\begin{cabstract}
+中文摘要。
+\end{cabstract}
+
+\begin{eabstract}
+English abstract.
+\end{eabstract}
+
+\pagenumbering{Roman}
+\thispagestyle{plain} %该页一般无页眉
+\vspace*{0em}
+\pdfbookmark[\pdftopmark]{目录}{contents}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\thispagestyle{plain} %该页一般无页眉
+\makectitle
+
+\section{第一节}
+
+引言
+
+\section{第二节}
+
+主体
+
+\subsection{第二节~第一小节}
+
+主体 1
+
+\subsection{第二节~第二小节}
+
+主体 2
+
+
+\newpage
+\pagenumbering{Roman}
+
+\begin{thebibliography}{99}
+\bibitem{citekey1} 参考文献条目一.
+\end{thebibliography}
+
+\newpage
+\ack
+
+致谢内容
+
+\newpage
+\appendix
+
+\section{附录一}
+
+\subsection{附录 1.1}
+
+附录内容
+
+\end{document}

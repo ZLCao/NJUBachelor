@@ -1,0 +1,178 @@
+\makectitle
+
+\chapter{\LaTeX{} 之我见}
+
+\section{工具与艺术}
+
+之前在人人上看到一篇介绍 \LaTeX{} 的文章，
+第一句话说的便是
+\begin{quotation}
+  \it \LaTeX{} 并不难， \LaTeX{} 也不是艺术。
+\end{quotation}
+对此，我并不完全赞同。
+诚然，对于一部分，甚至是很大一部分人来说
+\LaTeX{} 的确只是一个写文章的工具，
+但其底层 \TeX{} 设计的初衷绝非仅限于此。
+
+\TeX{} 之父，正是有编程圣经之称的 {\it The Art of Computer Programming\/} 的作者，
+大名鼎鼎的 \textit{Donald E. Knuth\/} 教授。
+他在为 \TeX{} 系统撰写的手册 \textit{The TeXBook\/} 第一章便写道
+
+\begin{quotation}
+  \small
+  English words like `technology' stem from a Greek root beginning with
+  the letters $\tau\epsilon\chi\ldots\,$; and this same Greek word means {\sl
+  art\/} as well as technology. Hence the name \TeX, which is an
+  uppercase form of $\tau\epsilon\chi$.
+  
+  \begin{center}
+      \ldots\ldots\ldots\ldots\qquad
+      \ldots\ldots\ldots\ldots\qquad
+      \ldots\ldots\ldots\ldots\qquad
+      \ldots\ldots\ldots\ldots\qquad
+      \ldots\ldots\ldots\ldots
+  \end{center}
+  
+  The purpose of this pronunciation exercise is to remind you that \TeX\ is
+  primarily concerned with high-quality technical manuscripts: Its emphasis is
+  on art and technology, as in the underlying Greek word. If you merely want
+  to produce a passably good document---something acceptable and basically
+  readable but not really beautiful---a simpler system will usually suffice.
+  With \TeX\ the goal is to produce the {\sl finest\/} quality; this requires
+  more attention to detail, but you will not find it much harder to go the
+  extra distance, and you'll be able to take special pride in the finished
+  product.
+\end{quotation}
+足见 \TeX{}/\LaTeX{} 并不仅仅是工具而已，它的诞生就是为了满足高质量排版的各种苛刻要求。
+
+又或者说，\LaTeX{} 本身是一种工具，而排版是艺术。
+就好比一支笔。很多人用笔写字，只是为了记录和表达，于他们而言，笔仅仅是工具。
+但也有人，成了书法家，书法是一种艺术。
+要写得好字，功夫自是必不可少的，一支好笔也同样很重要。
+\LaTeX{} 对于排版艺术，就是一支好笔。
+
+
+\section{软件与语言}
+
+就好比 C++ 是一种编程语言，而微软的 VC++ 是开发环境，它只是为了提高效率而已。
+没有 VC++，还可以选择 devC++，或者使用任何文本编辑器配合编译器。
+语言的核心，只是代码和编译器而已。
+
+同样的，虽然很多人把 \LaTeX{} 视为软件，私以为以排版语言理解之更为合适。
+其实只需一个编辑器编辑源文件，在命令行里编译，就可以得到高质量的排版结果。
+而所说的软件，如 \CTeX 套装里自带的 WinEdt，以及开源的 TeXworks，TeXstudio 等，
+就好比 VC++ 或者 devC++。
+所以说，\LaTeX{} 其实是一种编译器，或者语言。
+正如 C++ 编译器用来编译 C++ 语言，当谈论 \LaTeX{}，我们既指编译器，也指语言。
+
+当然，令人惊奇的是，当我们谈论 \LaTeX{}，很多时候我们用的却并非在用 \LaTeX{} 进行编译。
+首先，我们应该先搞清楚 TeX，pdfTeX，XeTeX 以及 LaTeX，pdfLaTeX，XeLaTeX。
+当然，继续了解，还有 ConTeXt，LuaTeX 等。
+比如 TeX，pdfTeX，XeTeX，是 TeX 的三种编译器，它们共同编译满足 TeX 语法的源文件。
+不同的是 TeX 输出的是~.dvi 格式的文件，需要经过额外的转换才能得到 pdf 文件。
+要知道，TeX 的诞生可比 pdf 的流行要早得多。
+而 pdfTeX，顾名思义，可以直接输出 pdf 文件。
+TeX 系统原本并不支持调用操作系统字体，它调用的字体都是 TeX 系统自带的文件定义的，
+而标准的 LaTeX 发行版，因为版权原因并没有包含 windows 上常用中易字体的定义文件。
+另一方面，原先的 TeX 系统只具备处理标准 ASCII 码的能力，
+对于中文这样字符数量庞大的语言，就更加无法提供支持了。
+虽然 TeX 系统诞生之出并不支持非英文语言，
+但在世界各地用户的努力下，TeX 系统也开始支持越来越多的语言。
+至于 XeTeX，则可以调用系统字体，并且使用通用性更好的 UTF-8 编码，让非英文排版变得简单。
+再说说我们的主角 LaTeX，原本只是基于 TeX 的一个拓展。
+它的语法与 TeX 并不兼容。虽然 TeX 文档和 LaTeX 文档的后缀都是~.tex，
+但既不能用 TeX 编译器编译 LaTeX 源文件，也不能用 LaTeX 编译器编译 TeX 源文件。
+LaTeX 和 ConTeXt，LuaTeX，都是 TeX 的拓展。
+LaTeX 是其中最流行的拓展，另外两个不甚了解，就不作介绍了。
+这里已经不难理解 pdfLaTeX 和 XeLaTeX，分别是 pdfTeX 和 XeTeX 向上兼容 LaTeX 拓展的产物了。
+
+当然 \LaTeX{} 现在已经是一个很笼统的称呼了。
+一个完整的 \LaTeX{} 发行套装，包含上述提到的全部编译器，
+甚至还提供了 \texttt{metapost} 和 Asymptote 这样强大的绘图语言。
+另外 windows 版本还会自带编辑器。
+而我们最常用的还是 \LaTeX{} 语言和它相应编译器。
+由于以前用 Linux 时 LaTeX 和 pdfLaTeX 还不能处理中文，
+我自己对 XeLaTeX 情有独钟，
+以至于这份模板仅支持 XeLaTeX 一种编译途径。
+
+
+\section{\LaTeX{} 与 Word}
+
+\LaTeX{} 与 Word 的差别，
+其实就是一个开源的可扩展的排版语言，
+和一个封闭的商业软件的差别。
+
+首先，作为一种排版语言，\LaTeX{} 体现出了惊人的可扩展性。
+只要有人为它开发宏包，它就能拥有很多令人吃惊的功能。
+除了自带的优秀的公式排版，它还可以借助相应的宏包排版
+化学结构式、流程图、交换图，甚至各种棋谱和乐谱。
+使用 Word，你需要另外购买的功能，\LaTeX{} 很多都可以通过宏包实现拓展。
+
+同时，作为排版语言，\LaTeX{} 让你可以通过命令对排版效果进行细致的控制。
+就比如上边这段话，我们可以试着在“甚至各种棋谱和乐谱。”
+后加上 \verb|\linebreak| 命令来建议 \LaTeX{} 断行。
+得到的效果如下边这段话：
+
+首先，作为一种排版语言，\LaTeX{} 体现出了惊人的可扩展性。
+只要有人为它开发宏包，它就能拥有很多令人吃惊的功能。
+除了自带的优秀的公式排版，它还可以借助相应的宏包排版
+化学结构式、流程图、交换图，甚至各种棋谱和乐谱。\linebreak
+使用 Word，你需要另外购买的功能，\LaTeX{} 很多都可以通过宏包实现拓展。
+
+在 Word 里没有这样的自由吧，是不是很赞！再看看这个，如果我要输入公式
+\begin{gather*}
+  -x<y<z \\ p<y<z
+\end{gather*}
+这样的效果似乎还不够，在 $p$ 前加入 \verb|\phantom{-}| 占据一个负号的位置呢？
+\begin{gather*}
+  -x<y<z \\ \phantom{-}p<y<z
+\end{gather*}
+我想这就是工具与艺术的区别！
+
+\LaTeX{} 另外个巨大的巨大的优势就在于用
+\verb|\chapter{}|，\verb|\section{}| 这样的命令来整理文章的逻辑结构，
+通过预先定义章节标题的样式来实现各种效果。
+试想一下 Word 里，你打了“1. 标题”，然后回车准备输入正文，这时候出现了自动编号。
+可是下一节写什么你还没有想好啊，于是退格删除，把格式改回正文的格式。
+打到下一节，输入“2. 标题”，再用格式刷把第一节的标题刷到第二节。
+为了让标题与上一段分开一点，你在上一段末尾多敲了一个回车。
+有时候还会遇到更尴尬的情况，这个标题正好在一页的末尾，这一节就这样被“斩首”了，
+不太好看，于是你回到上一节，啪啪啪一路回车愣是把这一节的标题换到下一页。
+接着写，你突然想起来前面要再插入一节。
+如果你不太清楚大纲视图和自动编号，那惨了，你得把后面的节前面的数字全部改了。
+别忘了还有你之前换页敲的一溜回车，重新删了吧……
+
+好吧，我又在意淫 Word 用户的困扰了。
+其实我并不是要黑 Word，只是拿全靠回车、空格和格式刷排版的 Word 用户举个例子。
+习惯了 \LaTeX{} 的 \verb|\chapter{}|，\verb|\section{}|这一套，
+回到 Word，便会自觉地开始学习用样式来规定标题的格式和编号，
+标题设置成与下段同页就避免了上述的尴尬，
+孤行控制还可以防止某段的最后一行落到下一页，诸如此类。
+当习惯了 \LaTeX{} 通过 \verb|\label{}| 和 \verb|\ref{}| 统一地实现交叉引用，
+回到 Word，就会学习使用题注来添加图表标题。
+当然，你最终会发现，这些没有 \LaTeX{} 里的命令来得好用。
+
+这便是 \LaTeX{} 所谓“所想既所得”与 Word 之“所见即所得”的差别。
+\LaTeX{} 让你专注于写文章，而非文章的排版。
+我想很多人之所以把 \LaTeX{} 视为工具，原因就在于此。
+既然不需要写文章的人关注排版，那么事先定义好详细的排版规则，
+让排版出来的文章美观、高质量，这就是 \LaTeX{} 和其它宏包设计者该做的事了。
+对于这些人，\LaTeX{} 必须是艺术。
+当然，前面给出的两个关于细节控制的例子，
+对于将 \LaTeX{} 完全视为工具的使用者而言，是不必要了解的，
+对于重视排版效果的人，则会为这个系统贴心的设计感到欣喜。
+
+写了那么多，并不是为了显示 \LaTeX{} 有多么优越。
+Word 也很强大，只是它太容易上手了，
+容易到用户会很容易无视它强大的功能而选择最“暴力”的办法。
+当然，说到论文模板这种东西，真不得不说还是 \LaTeX{} 好用。
+至少每次在 Word 的某条下划线上打字，字的位置还得尽量居中的时候，我都感到十分头大。
+况且 Word 整理各种编号和文档结构的效率，还真是远不如 \LaTeX{}。
+有人说 \LaTeX{} 是理科生写论文用的，甚至理科生里搞实验的会说那是搞理论的人用的。
+我看其实不然，诚然 \LaTeX{} 高效的公式编辑和美观的公式排版确实对搞理论的人很有用，
+但如果一个的文科生，一个脱离了公式和图表的纯粹的文科生，
+用 \LaTeX{} 应该感到同样的舒心痛快，乃至更甚。
+试想一下，一篇论文，只需要各级标题和引用，全文几乎只用到
+\verb|\chapter{}| 和 \verb|\section{}| 开启新的章节，
+\verb|\cite{}| 引用参考文献，\verb|\footnote{}| 添加脚注，
+岂不是比用 Word 排版还要容易得多！

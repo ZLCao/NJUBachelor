@@ -1,0 +1,202 @@
+\chapter{模板使用说明}
+
+\section{模板的宗旨}
+
+我们已经知道，\LaTeX{} 通过命令和环境实现各种复杂的排版效果。
+在导言区，我们可以通过调入宏包，
+利用调入宏包提供的各种设置命令以及自定义各种命令，
+来定制文档的排版效果。
+如果导言区有很多内容，有时我们把它写在另外一个~.tex 文件中，
+利用 \verb|\input{文件}| 的方式调入到导言区中。
+这样做的好处是精简文档代码，尽量把内容与自定义设置分开。
+在书写某些大型的文档时，
+我们也可以使用 \verb|\input{章节文件.tex}| 的方式对文档进行拆分。
+编译时只需要调入正在编辑的章节内容，而不必编译整份文档，节约编译的时间。
+当然，利用命令 \verb|\input{章节文件.tex}| 来拆分文档有相当的局限性，以后再作说明。
+
+对于比较复杂的模板，更好的方法是将自定义的内容制作成宏包或者文类。
+文类可以提供选项，这样一个文类可以根据不同的选项提供不同的排版。
+文类中可以方便地重定义某些 \LaTeX{} 的内部命令，来改变排版效果。
+更重要的，对于我这样的菜鸟，用文类写模板看起来似乎更加专业一些。
+好吧，其实除了看起来更专业我真的没觉得用文类能比 \verb|\input{}| 优越太多。
+
+当然，毕业论文模板另一个相当重要的功能就是提供其他用户一些命令，
+以方便地排版出封面、摘要等内容。
+用模板排版封面、摘要等内容，无论质量还是方便性，与 Word 相比都有巨大的优势。
+
+\section{开始}
+
+使用本模板，方法十分简单。
+我们已经知道怎样开始一个标准的 \LaTeX{} 文档，
+使用本模板，只需要把调用的文类替换成 \verb|NJUbachelor| 即可。
+
+{\small\vspace{-0.2em}%
+\begin{verbatim}
+              \documentclass[参数]{NJUbachelor}
+                导言区
+              \begin{document}
+                正文
+              \end{document}
+\end{verbatim}}
+
+
+\section{参数}
+
+你可以直接调用模板而不给出任何参数，缺省选项是为最通用的情况设置。
+当然，你也可以根据自己的需求输入参数，来改变缺省设置。
+可选的参数有
+\begin{description}
+  \item[thesis/design] 封面页显示“本科毕业论文”或者“本科毕业设计”。
+    其中 \texttt{thesis} 为缺省设置。
+  \item[oneside/twoside] 设置单面或者双面打印。
+    双面打印会区分单双页，页眉和左右页边距都会根据单双页自动调整。
+    双面打印时还会在必要的地方插入空白页。
+    其中 \texttt{oneside} 为缺省设置。
+  \item[pageheader/nopageheader] 设置是否打印页眉。
+    \texttt{nopageheader} 为缺省设置。
+  \item[chapter/nochapter] 设置是否支持章 \verb|\chapter{}| 层次。
+    不使用章层次更符合学校要求。
+    不使用章层次时，最高一级标题是 \verb|\section{节标题}|。
+    节标题套用学校章的要求使用四号黑体。
+    （简单的说，就是学校要求中的章模板中由 \verb|\section{}| 命令给出）
+    毕竟本科学位论文还没有长到要用 \LaTeX{} 中的章层次的地步。
+    如果用章层次，则每一章都会另起一页开始。
+    使用章层次将无法在正文生成中文标题，
+    中文标题的格式三号宋体加粗被套用给章，
+    而节的格式仍然是四号黑体。
+    其中 \texttt{nochapter} 为缺省设置。
+  \item[openright/openany] 如果有章层次，
+    设置章层次可在任意页新起一页或者必须在右手（奇数）页新起一页。
+    其中 \texttt{openright} 为缺省设置。
+  \item[longtitle/shorttitle/manualtitle]
+    设置标题页和中文摘要纸的中文标题排版效果。
+    长标题可支持自动换行，左对齐显示；
+    短标题适合单行标题，可在横线上居中显示；
+    手动标题可以利用 \verb|\mtitle| 命令提供手动换行支持，
+    每一行标题都可以在横线上居中显示。
+    其中 \texttt{longtitle} 为缺省设置。
+  \item[shortdepspe/longdepspe]
+    你可以根据自己院系和专业名的总长度进行选择。
+    选择 shortdepspe 的排版效果和学校给出的中文摘要页是一样的；
+    如果院系专业名太长，可以选择 longdepspe 选项。
+    其中 \texttt{shortdepspe} 为缺省设置。
+  \item[defaultmath/mathptm/mathtxf] 你可以根据自己的喜好选择数学字体。
+    其中 \texttt{defaultmath} 为缺省设置。
+\end{description}
+
+
+\section{基本信息输入}
+
+论文基本信息的输入必须在生成标题页和摘要页之前（这似乎很显然）。
+建议你在导言区输入论文的基本信息，
+以便你的论文信息可以正确写入生成 pdf 的文件属性。
+根据学校所给标题页和中英文摘要纸的要求，
+本模板定义了以下命令来给出论文的基本信息。
+关于基本信息的输入，可以参考 start.tex，这里就不赘述了。
+
+唯一值得注意的，如果需要手动换行，除使用 \textbf{manualtitle} 选项，
+另需添加一条命令
+$$ \verb|\mtitle{标题1,标题2,标题3}| $$
+告诉系统断行方案。
+封面页和中文摘要纸将采用相同的断行方案。
+
+
+\section{正文前内容}
+
+正文前内容包括封面，中英文摘要纸和目录。
+首先，封面页由命令 $$ \verb|\makectitlepage| $$ 生成。
+它将自动把导言区输入的论文基本信息填写到封面相应的空缺处。
+然后分别是中英文标题页，它们分别由中英文摘要环境给出
+
+{\vspace{-0.2em}%
+\begin{verbatim}
+            \begin{cabstract}      \begin{eabstract}
+              中文摘要。              English abstract.
+            \end{cabstract}        \end{eabstract}
+\end{verbatim}}
+
+\vspace{-0.2em}\noindent
+你只需要在环境中写入摘要的内容，
+摘要纸的其它空缺同样会依据导言区给出的基本信息自动进行填充。
+最后是目录。
+学校规定非正文内容要用大写罗马数字作页码。
+所以首先利用命令 \verb|\pagenumbering{Roman}| 规定页眉格式。
+同时目录页是不需要页眉的，
+因此使用 \verb|\thispagestyle{plain}| 规定页面样式为无页眉。
+如果使用的是 nochapter 模式，
+目录标题作为节层次，摆放的位置会略微偏高，影响美观，
+可以试着插入一条 \verb|\vspace*{0em}| 命令。
+为了让生成 pdf 的标签带有目录这一条目，
+再插入命令 \verb|\pdfbookmark[0]{目录}{contents}|。
+最后，是正式的目录生成命令 $$\verb|\tableofcontents|$$
+至此，正文前的内容就全部输入完成了。
+
+
+\section{正文书写}
+
+正文需要另起一页并用阿拉伯数字编号页码，
+需要用到命令 \verb|\newpage| 和 \verb|\pagenumbering{arabic}|。
+正文第一页一般同样无页眉，因此再跟一条命令 \verb|\thispagestyle{plain}|。
+接着，生成正文标题 $$\verb|\makectitle|$$
+需要注意的是，chapter 模式下我强行把这一命令设置为空，
+即使使用也无法得到输出。
+同时，这一模式下我把标题的格式赋给了章标题。
+因此 chapter 模式并不很符合学校所给文件的要求。
+
+接着，就可以书写论文正文了。
+根据个人的使用经验，为了方便，这里还给出了三个常用的自定义命令。
+\begin{description}
+  \item[\texttt{\textbackslash{}diff}]
+    定义了微分算符，用法前面已经提到。
+  \item[\texttt{\textbackslash{}scite\{citekey\}}]
+    用以提供参考文献引用的上标效果。
+  \item[\texttt{\textbackslash{}unit\{UNIT\}}]
+    定义了单位命令，如输入 \verb|5\unit{cm^{2}}|，
+    得到 5\unit{cm^{2}}，单位自动写成正体，并与数字空开一点距离。
+\end{description}
+
+\section{正文后内容}
+
+正文后内容也需要用 \verb|\newpage| 另起一页，
+并用 \verb|\pagenumbering{Roman}| 设置页码为大写罗马数字。
+正文后内容包括参考文献，致谢和附录。
+
+参考文献的排版方式有两种。
+一种是利用 \verb|thebibliography| 环境来实现，
+其实现方法如下
+
+{\vspace{-0.2em}%
+\begin{verbatim}
+            \begin{thebibliography}{n}
+              \bibitem{citekey1} bibitem1
+              \bibitem{citekey2} bibitem2
+                ...  ...  ...  ...  ...
+            \end{thebibliography}
+\end{verbatim}}
+
+\vspace{-0.2em}\noindent
+其中数字 \texttt{n} 的位数应与参考文献条目数的位数相同。
+如你有18条参考文献，则 \texttt{n} 可以是任何两位数。
+这个参数用于参考文献前数字的对齐。
+\texttt{citekey1} 和 \texttt{citekey2} 是参考文献的引用标记，
+你可以把 \texttt{bibitem1} 和 \texttt{bibitem2}
+按照一定的格式，手动替换成你的参考文献条目。
+
+另一种方法是使用 bibtex 管理参考文献。
+模板附带了 bibtex 样式文件 NJUbachelor.bst，
+系统可以按照样式文件的定义，自动排版文献数据库并得到参考文献列表。
+bibtex 系统的使用在此就不赘述了，感兴趣的同学可以自行百度。
+
+致谢的生成也十分简单，利用命令 $$\verb|\ack|$$
+系统就会新起一页，并生成致谢标题。
+在 chapter 模式下，致谢标题的等级为章，nochapter 模式下则为节，
+并自动套用章或节的标题格式。
+你只需在该命令后直接书写致谢的内容即可。
+
+书写附录，需要另起一页，
+在 nochapter 模式下需要额外的 \verb|\newpage| 命令。
+在 chapter 模式下，因为章节标题自动新起一页，所以就无需手动分页了。
+在命令 $$\verb|\appendix|$$ 后开始附录。
+附录的章节标题及内容的书写与正文并无差别，只是编号的形式会作调整。
+
+至此，怎样使用该模板书写毕业论文，也基本讲解完了。
