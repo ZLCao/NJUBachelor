@@ -10,7 +10,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{NJUbachelor}[2013/06/06 V2.3 NJUbachelor Style for NJUers Created by Zlcao]
+\ProvidesClass{NJUbachelor}[2016/06/05 V2.4 NJUbachelor Style for NJUers Created by Zlcao]
 
 \newif\ifNJU@thesis
 \DeclareOption{thesis}{\NJU@thesistrue}
@@ -60,50 +60,8 @@
 \fi
 
 \RequirePackage[no-math]{fontspec} %xelatex支持
-\RequirePackage[UTF8,nofonts,fntef,fancyhdr]{ctexcap} %中文支持
-% 字号对应
-  \renewcommand\normalsize{% 12bp
-    \@setfontsize\normalsize{\CTEX@fs@sfour}{\CTEX@fs@sfourskip}%
-    \abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
-    \abovedisplayshortskip \z@ \@plus3\p@
-    \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
-    \belowdisplayskip \abovedisplayskip
-    \let\@listi\@listI}
-  \normalsize
-  \renewcommand\small{% 10.5bp
-    \@setfontsize\small{\CTEX@fs@five}{\CTEX@fs@fiveskip}%
-    \abovedisplayskip 11\p@ \@plus3\p@ \@minus6\p@
-    \abovedisplayshortskip \z@ \@plus3\p@
-    \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
-    \def\@listi{\leftmargin\leftmargini
-                \topsep 9\p@ \@plus3\p@ \@minus5\p@
-                \parsep 4.5\p@ \@plus2\p@ \@minus\p@
-                \itemsep \parsep}%
-    \belowdisplayskip \abovedisplayskip}
-  \renewcommand\footnotesize{% 9bp
-    \@setfontsize\footnotesize{\CTEX@fs@sfive}{\CTEX@fs@sfiveskip}%
-    \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
-    \abovedisplayshortskip \z@ \@plus3\p@
-    \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
-    \def\@listi{\leftmargin\leftmargini
-                \topsep 6\p@ \@plus2\p@ \@minus2\p@
-                \parsep 3\p@ \@plus2\p@ \@minus\p@
-                \itemsep \parsep}%
-    \belowdisplayskip \abovedisplayskip}
-  \renewcommand\scriptsize{% 7.5bp
-    \@setfontsize\scriptsize{\CTEX@fs@six}{\CTEX@fs@sixskip}}
-  \renewcommand\tiny{% 6.5bp
-    \@setfontsize\tiny{\CTEX@fs@ssix}{\CTEX@fs@ssixskip}}
-  \renewcommand\large{% 15bp
-    \@setfontsize\large{\CTEX@fs@sthree}{\CTEX@fs@sthreeskip}}
-  \renewcommand\Large{% 18bp
-    \@setfontsize\Large{\CTEX@fs@stwo}{\CTEX@fs@stwoskip}}
-  \renewcommand\LARGE{% 22bp
-    \@setfontsize\LARGE{\CTEX@fs@two}{\CTEX@fs@twoskip}}
-  \renewcommand\huge{% 24bp
-    \@setfontsize\huge{\CTEX@fs@sone}{\CTEX@fs@soneskip}}
-  \renewcommand\Huge{% 26bp
-    \@setfontsize\Huge{\CTEX@fs@one}{\CTEX@fs@oneskip}}
+\RequirePackage[UTF8, fontset = none, zihao = -4, heading = true]{ctex} %中文支持
+\RequirePackage{fancyhdr}
 
 \RequirePackage[left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}   %页面设置
 
@@ -128,8 +86,8 @@
             pdfauthor={\NJU@cauthor/\NJU@eauthor},
             pdfsubject={南京大学本科毕业论文（设计）},
             pdfkeywords={\NJU@ckeywords/\NJU@ekeywords}}
-\setlength{\baselineskip}{1.26\baselineskip}}
-
+\setlength{\baselineskip}{1.26\baselineskip}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -187,7 +145,7 @@
 % 一种样式
 \newcommand{\makesomething}[1]{%
   \begin{center}
-    \zihao{3}\songti\bf #1
+    \zihao{3}\bfsong #1
   \end{center}}
 
 
@@ -222,6 +180,8 @@
 \setCJKfamilyfont{zhshu}{FZShuTi}
 \setCJKfamilyfont{zhhu}{STHupo}
 \setCJKfamilyfont{zhcai}{STCaiyun}
+\setCJKfamilyfont{zhbfsong}{STSong}
+\setCJKfamilyfont{zhbfkai}{STKaiti}
 
 \providecommand*{\songti}{\CJKfamily{zhsong}} % 宋体
 \providecommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
@@ -234,6 +194,8 @@
 \providecommand*{\shuti}{\CJKfamily{zhshu}}   % 舒体
 \providecommand*{\hupo}{\CJKfamily{zhhu}}     % 琥珀
 \providecommand*{\caiyun}{\CJKfamily{zhcai}}  % 彩云
+\providecommand*{\bfsong}{\bf\CJKfamily{zhbfsong}}
+\providecommand*{\bfkai}{\bf\CJKfamily{zhbfkai}}
 
 %% 图表标题字体声明
 %\DeclareCaptionFont{hei}{\heiti}
@@ -245,15 +207,13 @@
 %                    ctex中文格式
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\CTEXoptions[
-%  contentsname={目录},listfigurename={插图},
-%  listtablename={表格},figurename={图},
-%  tablename={表},abstractname={},
-%  indexname={索引},bibname={参考文献}]
 \ifNJU@chapter
-  \CTEXoptions[contentsname={目~~~录},indexname={索~~~引}]
+  \ctexset{
+    contentsname = {目~~~录},
+    indexname = {索~~~引}
+  }
 \else
-  \CTEXoptions[contentsname={\zihao{3}\songti\bf 目~~~录}]
+  \ctexset{ contentsname = {\zihao{3}\bfsong 目~~~录} }
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,15 +221,25 @@
 %                     标题格式/目录标题格式
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\CTEXsetup[number=\arabic{chapter},titleformat={\zihao{3}\bf},%
-           nameformat={\zihao{3}\bf},beforeskip={1.2em},afterskip={1.8em}]{chapter}
 \ifNJU@chapter
-  \CTEXsetup[format={\sf\zihao{4}}]{section}
+  \ctexset{
+    chapter = {
+      number = \arabic{chapter},
+      format = \centering\zihao{3}\bfsong,
+      nameformat = {},
+      titleformat = {},
+      beforeskip = 1.2em,
+      afterskip = 1.8em
+    },
+    section/format = \sf\zihao{4}
+  }
 \else
-  \CTEXsetup[format+={\sf\zihao{4}}]{section}
+  \ctexset{ section/format+ = \sf\zihao{4} }
 \fi
-\CTEXsetup[format={\sf\zihao{-4}}]{subsection}
-\CTEXsetup[format={\sf\zihao{-4}}]{subsubsection}
+\ctexset{
+  subsection/format+ = \sf\zihao{-4},
+  subsubsection/format+ = \sf\zihao{-4}
+}
 
 \ifNJU@chapter
   \titlecontents{chapter}[4em/12*14]{\vspace{1.6em}\sf\zihao{4}}%
@@ -359,7 +329,7 @@
 \newenvironment{cabstract}
   {\newpage\thispagestyle{empty}\pdfbookmark[\pdftopmark]{摘要}{cabstract}%
   \begin{center}
-    \bf\kaishu\zihao{-2}\uuline{南京大学本科生毕业论文（设计）中文摘要}
+    \bfkai\zihao{-2}\uuline{南京大学本科生毕业论文（设计）中文摘要}
   \end{center}
   \vspace{0.5em}\kaishu\zihao{4}\noindent
   \begin{Description}{毕业论文题目:}
@@ -397,7 +367,7 @@
 \newenvironment{eabstract}
   {\newpage\thispagestyle{empty}\pdfbookmark[\pdftopmark]{ABSTRACT}{eabstract}%
   \begin{center}
-    \bf\kaishu\zihao{-2}\uuline{南京大学本科生毕业论文（设计）英文摘要}
+    \bfkai\zihao{-2}\uuline{南京大学本科生毕业论文（设计）英文摘要}
   \end{center}
   \vspace{0.5em}\zihao{4}\noindent
   \begin{Description}{THESIS:}
@@ -418,14 +388,6 @@
 %                         标题页及标题
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    Englishtitlepage % 这是以前课程论文的英文 titlepage
-%\newcommand{\makeetitlepage}{\begin{titlepage}\begin{center}
-%  \parbox[c][100mm][c]{\textwidth}{\huge \centering \NJU@etitle}\\[-36mm]
-%  \Large A thesis presented by\\ \smallskip \NJU@eauthor \\
-%  \bigskip	to\\	\bigskip \NJU@edepartment \\
-%  in partial fulfillment of the requirements of the course\\ \textit{\NJU@ecourse}
-%  \vfill \parbox[c][36mm][c]{\textwidth}{\centering \NJU@eschool \\ \NJU@edate}
-%\end{center}\end{titlepage}}
 %    Chinesetitlepage
 \newcommand{\makectitlepage}
   {\thispagestyle{empty}\pdfbookmark[\pdftopmark]{封面}{cover}%
@@ -433,7 +395,7 @@
     \includegraphics[width=0.14\textwidth]{njulogos/njulogo.pdf}\vspace{2.6em}
     \begin{center}
       \includegraphics[width=0.5\textwidth]{njulogos/njuname.pdf}\\[2.8em]
-      \zihao{1}\bf
+      \zihao{1}\bfsong
       \ifNJU@thesis 本~~科~~毕~~业~~论~~文
       \else         本~~科~~毕~~业~~设~~计
       \fi
@@ -441,9 +403,9 @@
       \begin{minipage}{0.8\textwidth}
         \zihao{3}\rm\kaishu
         \begin{Description}{学生姓名}
-          \item[\bf\kaishu 院~~~~~~~~系] \uline{\hfill\NJU@cdepartment\hfill\mbox{}}
-          \item[\bf\kaishu 专~~~~~~~~业] \uline{\hfill\NJU@cspecialization\hfill\mbox{}}
-          \item[\bf\kaishu 题~~~~~~~~目]
+          \item[\bfkai 院~~~~~~~~系] \uline{\hfill\NJU@cdepartment\hfill\mbox{}}
+          \item[\bfkai 专~~~~~~~~业] \uline{\hfill\NJU@cspecialization\hfill\mbox{}}
+          \item[\bfkai 题~~~~~~~~目]
             \ifNJU@longtitle \uline{\NJU@ctitle\hfill\mbox{}}
             \else
               \ifNJU@shorttitle \uline{\hfill\NJU@ctitle\hfill\mbox{}}
@@ -454,12 +416,12 @@
                 \fi
               \fi
             \fi
-          \item[\bf\kaishu 年~~~~~~~~级] \uline{\makebox[6em][c]{\NJU@grade}}
-               {\bf\kaishu 学  ~~~   号} \uline{\hfill\NJU@sid\hfill\mbox{}}
-          \item[\bf\kaishu 学生姓名]      \uline{\hfill\NJU@cauthor\hfill\mbox{}}
-          \item[\bf\kaishu 指导老师]      \uline{\makebox[6em][c]{\NJU@cmentor}}
-               {\bf\kaishu 职  ~~~   称}  \uline{\hfill\NJU@cmentortitle\hfill\mbox{}}
-          \item[\bf\kaishu 提交日期]      \uline{\hfill\NJU@cdate\hfill\mbox{}}
+          \item[\bfkai 年~~~~~~~~级] \uline{\makebox[6em][c]{\NJU@grade}}
+               {\bfkai 学  ~~~   号} \uline{\hfill\NJU@sid\hfill\mbox{}}
+          \item[\bfkai 学生姓名]     \uline{\hfill\NJU@cauthor\hfill\mbox{}}
+          \item[\bfkai 指导老师]     \uline{\makebox[6em][c]{\NJU@cmentor}}
+               {\bfkai 职  ~~~   称} \uline{\hfill\NJU@cmentortitle\hfill\mbox{}}
+          \item[\bfkai 提交日期]     \uline{\hfill\NJU@cdate\hfill\mbox{}}
         \end{Description}
       \end{minipage}
       \vfill
@@ -512,6 +474,10 @@
 %                         Change Log
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2.4
+% ！ 通过引入华文字体解决了由于加粗引起的正文无法复制的错误
+% ！ 更新了对 ctex 2.0 的兼容性
+%
 % 2.3
 % 修改了中文摘要的行间距
 % 修正了英文摘要的与ABSTRACT字样的行间距
