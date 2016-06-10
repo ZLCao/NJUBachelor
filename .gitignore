@@ -78,6 +78,7 @@ acs-*.bib
 
 # hyperref
 *.brf
+*.hd
 
 # knitr
 *-concordance.tex

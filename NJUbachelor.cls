@@ -1,31 +1,31 @@
 %%
-%% This is file `NJUbachelor.cls',
+%% This is file `njubachelor.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% NJUbachelor.dtx  (with options: `cls')
+%% njubachelor.dtx  (with options: `cls')
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2005-2016 by Zachary Cao <caozengle@163.com>
+%% Copyright (C) 2013-2016 by Zachary Cao <caozengle@163.com>
 %% 
 %% This file may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3a
+%% conditions of the LaTeX Project Public License, either version 1.3c
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in:
 %% 
 %% http://www.latex-project.org/lppl.txt
 %% 
-%% and version 1.3a or later is part of all distributions of LaTeX
-%% version 2004/10/01 or later.
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008/05/04 or later.
 %% 
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{NJUbachelor}
-[2016/06/06 3.0 NJUbachelor Style for NJUers]
+\ProvidesClass{njubachelor}
+    [2016/06/06 v3.0 Nanjing University Bachelor's Degree Thesis Template]
 \newif\ifNJU@thesis
 \DeclareOption{thesis}{\NJU@thesistrue}
 \DeclareOption{design}{\NJU@thesisfalse}
@@ -358,4 +358,4 @@
 \AtEndOfClass{\sloppy}
 \endinput
 %%
-%% End of file `NJUbachelor.cls'.
+%% End of file `njubachelor.cls'.

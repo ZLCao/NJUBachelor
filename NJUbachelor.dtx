@@ -1,28 +1,38 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2016 by Zachary Cao <caozengle@163.com>
+% Copyright (C) 2013-2016 by Zachary Cao <caozengle@163.com>
 %
 % This file may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either version 1.3a
+% conditions of the LaTeX Project Public License, either version 1.3c
 % of this license or (at your option) any later version.
 % The latest version of this license is in:
 %
 % http://www.latex-project.org/lppl.txt
 %
-% and version 1.3a or later is part of all distributions of LaTeX
-% version 2004/10/01 or later.
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008/05/04 or later.
 %
 % \fi
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{NJUbachelor.dtx}[2016/06/08 3.0 NJUbachelor Style for NJUers]
+\ProvidesFile{njubachelor.dtx}
+%</driver>
+%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<cls>\ProvidesClass{njubachelor}
+%<cfg>\ProvidesFile{njubachelor.cfg}
+%<*cls|cfg>
+    [2016/06/06 v3.0 Nanjing University Bachelor's Degree Thesis Template]
+%</cls|cfg>
+%<*driver>
 \documentclass{ltxdoc}
 \usepackage{hypdoc}
 \usepackage{ctex}
+\usepackage{newpxtext,newpxmath}
 \usepackage[left=3.5cm,right=3.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 % 说明文档命令
+\newcommand{\njub}{{\sc NjuBachelor}}
 \newcommand{\pkg}[1]{$\texttt{#1}$}
 \newcommand{\opt}[1]{$\texttt{#1}$}
 
@@ -112,9 +122,9 @@
 %   罗马字体的数字表示使用对应索引项的代码行号。}}
 % \GlossaryPrologue{\section{\glossaryname}}
 %
-% \title{\bf \pkg{NJUbachelor}: 南京大学本科毕业论文模板}
-% \author{{曹增乐}\\[5pt]\texttt{caozengle@163.com}}
-% \date{v\fileversion\ (\filedate)}
+% \title{\bf \njub{}: 南京大学本科毕业论文模板}
+% \author{{曹增乐}\\南京大学物理学院\\[5pt]\texttt{caozengle@163.com}}
+% \date{\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
 % \StopEventually{\PrintChanges\PrintIndex}
@@ -122,22 +132,13 @@
 %
 % \section{实现细节}
 %
-% \subsection{基本信息}
-%
-%    \begin{macrocode}
-%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<cls>\ProvidesClass{NJUbachelor}
-%<cfg>\ProvidesFile{NJUbachelor.cfg}
-%<cls|cfg>[2016/06/06 3.0 NJUbachelor Style for NJUers]
-%<*cls>
-%    \end{macrocode}
-%
 % \subsection{选项定义及处理}
 %
 % \begin{macro}{thesis}
 % \begin{macro}{design}
 % 选择毕业论文或毕业设计
 %    \begin{macrocode}
+%<*cls>
 \newif\ifNJU@thesis
 \DeclareOption{thesis}{\NJU@thesistrue}
 \DeclareOption{design}{\NJU@thesisfalse}
@@ -835,9 +836,3 @@
 % \Finale
 %
 \endinput
-% \iffalse
-%  Local Variables:
-%  mode: doctex
-%  TeX-master: t
-%  End:
-% \fi

@@ -1,6 +1,6 @@
-xelatex NJUbachelor.ins
-xelatex NJUbachelor.dtx
-makeindex -s gind.ist NJUbachelor.idx
-makeindex -s gglo.ist -o NJUbachelor.gls NJUbachelor.glo
-xelatex NJUbachelor.dtx
-xelatex NJUbachelor.dtx
+xelatex njubachelor.ins
+xelatex njubachelor.dtx
+makeindex -s gind.ist njubachelor.idx
+makeindex -s gglo.ist -o njubachelor.gls njubachelor.glo
+xelatex njubachelor.dtx
+xelatex njubachelor.dtx
