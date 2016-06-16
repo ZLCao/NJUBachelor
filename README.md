@@ -13,7 +13,7 @@
 | **start.tex start.pdf** | 论文的默认模板及效果 |
 | **test.tex test.pdf** | 测试文档及源文件 |
 | **chapters** | 说明文档的章节文件 |
-| **fortest** | 学校的排版要求 |
+| **format** | 学校的排版要求 |
 | **njulogos** | 校徽 |
 | **refs** | 说明文档测试用文献数据库 |
 
@@ -28,7 +28,7 @@
 从 njubachelor.dtx 生成 njubachelor.cls 和 njubachelor.cfg
 
 ```shell
-xelatex njubachelor.ins
+latex njubachelor.ins
 ```
 
 通过编译 njubachelor.dtx 得到模板的说明文档
@@ -41,9 +41,13 @@ xelatex njubachelor.dtx
 xelatex njubachelor.dtx
 ```
 
+为方便使用，提供了 make_doc.bat 文件，
+可在 windows 平台安装并编译模板说明文档。
+同时，为使用 `make` 的用户提供了 makefile。
+
 ## 关于平台
 
-本模板最新兼容 texlive 2015 ，
+本模板最新兼容 texlive 2016 ，
 使用 CTeX 套件或者版本过旧的 texlive 套件可能引起错误，
 还需要进一步的测试。
 
@@ -51,7 +55,7 @@ xelatex njubachelor.dtx
 宏包中的加粗宋体和楷书都使用华文字体进行了替换。
 所以使用前请务必确保自己有 windows 的默认字体和华文字体。
 
-Linux 和 Mac 下移植 Windows 字体，使用 texlive 2015 套件的人应该也可以正常编译。
+Linux 和 Mac 下移植 Windows 字体，使用 texlive 2016 套件的用户应该也可以正常编译。
 
 
 ## 关于底层宏包的更新
@@ -70,6 +74,28 @@ Linux 和 Mac 下移植 Windows 字体，使用 texlive 2015 套件的人应该�
 由于 v2.4 版本更新了语法，
 使用此版及以后版本，
 请将 texlive 套件更新到 2015 以后的版本。
+
+## BibTex Style 模板 .bst 文件
+
+3.0 版以后，使用南大
+[胡海星](https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style)
+编写的 bst 文件，
+替换了原先
+[吴凯](http://bbs.ctex.org/forum.php?mod=viewthread&tid=33591)
+编写的 bst 文件。
+`bibtex` 编译不再报错，以防止 `latexmk` 进行自动化编译过程被报错终结。
+原先编译论文 `thesis.tex` 需要经过
+```shell
+xelatex thesis
+bibtex thesis
+xelatex thesis
+xelatex thesis
+```
+以得到正确的结果，现在只需要执行
+```shell
+latexmk -xelatex thesis
+```
+便可。同时， `latexmk` 还会自动判断需要的编译次数。
 
 
 
