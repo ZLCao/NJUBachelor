@@ -322,10 +322,18 @@
   \fancyfoot[C]{\thepage}
   \ifNJU@oneside
     \fancyhead[L]{\fangsong \NJU@subject}
-    \fancyhead[R]{\fangsong \leftmark}
+    \ifNJU@chapter
+        \fancyhead[R]{\fangsong \leftmark}
+    \else
+        \fancyhead[R]{\fangsong \rightmark}
+    \fi
   \else
     \fancyhead[EC]{\fangsong \NJU@subject}
-    \fancyhead[OC]{\fangsong \leftmark}
+    \ifNJU@chapter
+        \fancyhead[OC]{\fangsong \leftmark}
+    \else
+        \fancyhead[OC]{\fangsong \rightmark}
+    \fi
   \fi
 \else \pagestyle{plain}
 \fi
